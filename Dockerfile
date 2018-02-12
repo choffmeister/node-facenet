@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
       curl \
       g++ \
       git \
+      graphicsmagick \
       iputils-ping \
       libcairo2-dev \
       libjpeg8-dev \
@@ -45,7 +46,7 @@ RUN sudo chown -R facenet /facenet \
   && sudo ln -s /facenet /node_modules/facenet \
   && sudo rm -fr /tmp/* ~/.npm
 
-# EXPOSE 80
+EXPOSE 8080
 
 VOLUME [ "/workdir" ]
-CMD [ "npm", "start" ]
+CMD [ "node", "dist/examples/server.js" ]
